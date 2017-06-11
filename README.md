@@ -13,6 +13,7 @@ Language tutor app to learn/test chinese pronunciation
 ## Setup for STT 
 - setup Chinese dictation is osx preferences.
 - use double click `fn` twice to start dictation.
+- if you pronounced correctly you'll see the expected pinyin and english definition/translation. otherwise try again :)
 
 ## Setup for TTS
 - Download Chinese Mandarin `Ting-Ting`  text to speech language in osx.
@@ -32,8 +33,9 @@ npm start
 
 ## TODO: 
 
-- [ ] if you type pinyin, perhaps in another window. then it translates to chinese char, translates to english definition. and then can run say.js on it.  
+- [x] if you type pinyin, perhaps in another window. then it translates to chinese char, translates to english definition. and then can run say.js on it.  
 - [ ] speed control for speech playback, eg with slider? // not urgent
+- [ ] try move what's in the script tag in browserify and see if the app will run in the browser as well. eg in github pages demo.  
 
 
 ## Contributor 
