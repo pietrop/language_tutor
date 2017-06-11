@@ -1,9 +1,10 @@
 # Language tutor 
 
-Language tutor app to learn chinese pronunciation 
+Language tutor app to learn/test chinese pronunciation 
 
 Used [Quick Start Guide](http://electron.atom.io/docs/tutorial/quick-start) as a starting point.
 
+![sample](sample.png)
 
 ## TODO: 
 
