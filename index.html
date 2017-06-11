@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Language Tutor</title>
+  <link href="css/bootstrap.css" rel="stylesheet" >
+  <link href="css/custom.css" rel="stylesheet" >
+</head>
+<body>
+
+  <div class="container">
+
+    <br>
+    <br>
+    <!-- Input -->
+    <div class="form-group">
+      <div class="input-group">
+        <input  class="form-control textInput" rows="1" id="textInput"> 
+        <span class="input-group-btn">
+          <button class="btn btn-primary" id="playInput" type="button">Play</button>
+        </span>
+      </div>
+      <label class="control-label" >speak Chinese into this box</label>
+    </div>
+
+    <br>
+    <br>
+    <!-- Phonetic translation -->
+    <div class="form-group">
+      <textarea class="form-control textInput blackColor" rows="1" id="phoneticTranslation" disabled></textarea>
+      <label class="control-label" >auto translate in Pinyin</label>
+    </div>
+    <!-- Translation -->
+    <div class="form-group">
+      <textarea class="form-control textInput" rows="4" id="translation" disabled></textarea> 
+      <label class="control-label" >auto translate in English</label>
+    </div>
+
+  </div>
+</body>
+
+<script>
+'use strict';
+const convertToPinyin = require('pinyin-convert');
+const findHanzi       = require('find-hanzi');
+const isChinese       = require('is-chinese');
+const say             = require('say');
+
+var textInputElement = document.getElementById("textInput");
+var phoneticTranslationElement = document.getElementById("phoneticTranslation");
+var translationElement = document.getElementById("translation");
+
+var textInput ='';
+
+var chineseVoice = 'Ting-Ting';
+
+/**
+ * heper funcitons
+ */
+function getContentOfElement(element){
+  return element['value'];
+}
+
+function populateElement(element,content){
+  element['value'] = content;
+}
+
+function addToElement(element,content){
+  element['value'] += content;
+}
+
+
+
+ /**
+  * listener
+  * @return {[type]} [description]
+  */
+textInputElement.onkeyup = function(){
+  textInput = getContentOfElement(textInputElement).toString().trim();
+
+  //TODO Check if it is chinese
+  // textInput. if it is not chinese then dialogue box with alert error. type / speak some valid chinese char.  
+  if(isChinese(textInput)){
+     // TRANSLATE to phonetic 
+     convertToPinyin(textInput, {keepSpaces: true})
+     .then(function(res){
+      populateElement(phoneticTranslationElement,res);
+    }) 
+     .catch(console.error);
+
+    // TRANSLATE TO english 
+    var inputSentence =  textInput.split("");
+    //clear translaiton box 
+    populateElement(translationElement, "");
+
+    var results = [];
+    inputSentence.forEach(function(item, index, collection){
+      if(item.trim() !=="" ){
+        findHanzi(item).then(function(res){
+          addToElement( translationElement, res[0].hanzi+": "+ res[0].pinyin[0]+": "+res[0].definition + " \n");
+        });
+      }
+    });
+  //if not Chiinese
+}else{
+    //TODO: figure out a better way to do error handling. eg change color of text area. 
+    // alert("Type or say some valid chinese char in the box");
+    console.error('not chinese: ',textInput );
+  }
+};//onkeyup
+
+/**
+ * speak input text
+ */
+//TODO: add keyboard shortcut to read back sentence?
+// listener on button 
+var btnPlay = document.getElementById('playInput');
+
+btnPlay.onclick  = function(){
+  say.speak(chineseVoice,textInput);
+};
+
+
+
+
+// You can also require other files to run in this process
+require('./renderer.js')
+</script>
+</html>
