@@ -8,15 +8,27 @@ Language tutor app to learn/test chinese pronunciation
 
 ![sample](sample.png)
 
-## Setup 
-- Download Chinese Mandarin `Ting-Ting`  text to speech language in osx. 
+
+
+## Setup for STT 
 - setup Chinese dictation is osx preferences.
-
-- Enable Pinyin Chinese simplified keyboard in osx, with all caps as a switch between keyboard. 
-
 - use double click `fn` twice to start dictation.
-- or type using chinese keyboard and Pinyin carachters. 
 
+## Setup for TTS
+- Download Chinese Mandarin `Ting-Ting`  text to speech language in osx.
+- Enable Pinyin Chinese simplified keyboard in osx, with all caps as a switch between keyboard. 
+- now you can type using chinese keyboard and Pinyin carachters. eg if you remember how a word is spelled in pinyin but not how to pronunce it in chinese, and want to hear the pronunciation by the tts before trying dictation.
+
+
+## Development
+
+```
+npm install
+```
+
+```
+npm start
+```
 
 ## TODO: 
 
