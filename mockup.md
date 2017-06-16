@@ -1,5 +1,6 @@
 ## fn fn dictation in chines fn to stop add to first text area.
 
+```
 |————————————————————————————————————————————|
 | 前面 前面
 |
@@ -19,6 +20,7 @@
 |————————————————————————————————————————————|
 | hide| show | play | stop 
 |—————-——————-———————————————————————————————|
+```
 
 # auto translate to pinyin 
 listener on text area.

@@ -18,9 +18,10 @@
         <input  class="form-control textInput" rows="1" id="textInput"> 
         <span class="input-group-btn">
           <button class="btn btn-primary" id="playInput" type="button">Play</button>
+           <button class="btn btn-primary" id="translateInput" type="button">Translate</button>
         </span>
       </div>
-      <label class="control-label" >speak Chinese into this box</label>
+      <label class="control-label" >speak Chinese into this box. Use Mac Os X dictation function. Duble click the <code>fn</code> key with chinese language and chinese keyboard enabled. Then click outside the box to see if pinyin and translation match your expectation.</label>
     </div>
 
     <br>
@@ -47,6 +48,7 @@ const isChinese       = require('is-chinese');
 const say             = require('say');
 
 var textInputElement = document.getElementById("textInput");
+var translateInputBtn =  document.getElementById("translateInput");
 var phoneticTranslationElement = document.getElementById("phoneticTranslation");
 var translationElement = document.getElementById("translation");
 
@@ -69,13 +71,16 @@ function addToElement(element,content){
   element['value'] += content;
 }
 
-
-
  /**
   * listener
   * @return {[type]} [description]
   */
-textInputElement.onkeyup = function(){
+ 
+translateInputBtn.onclick = translate;
+textInputElement.onchange = translate;
+textInputElement.onkeyup = translate;
+
+function translate(){
   textInput = getContentOfElement(textInputElement).toString().trim();
 
   //TODO Check if it is chinese
