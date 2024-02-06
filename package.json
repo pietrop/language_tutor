@@ -17,12 +17,12 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "~1.6.2"
+    "electron": "^28.2.1"
   },
   "dependencies": {
     "find-hanzi": "^1.0.7",
     "is-chinese": "^1.2.5",
-    "pinyin-convert": "^1.0.4",
+    "pinyin-convert": "^1.11.0",
     "pinyin-or-hanzi": "^1.0.3",
     "say": "git+https://github.com/pietrop/say.js.git"
   }
