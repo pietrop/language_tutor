@@ -1,6 +1,6 @@
 # Language tutor - draft 
 
-_in active development_
+_Work in progress_
 
 Language tutor app to learn/test chinese pronunciation 
 
